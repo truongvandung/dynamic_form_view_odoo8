@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-extend="FormView.buttons">
+        <t t-jquery=".o_form_buttons_edit" t-operation="after" >
+            <div class="change_string_form_field" style="display: inline-block; float: right; margin-left: 5px">
+                <div class="input-group margin-bottom-sm choose_field_show" style="float: left; margin-right: 10px">
+                    <a type="button" title="Choose fields to show!" class="btn btn-default toggle_select_field" style="font-size: 13px; padding-top: 5px; padding-bottom: 5px">
+                        Fields
+                        <i class="fa fa-chevron-down" title="Change String Fields!."  style="margin-left: 4px" aria-hidden="true"></i>
+                    </a>
+                    <div class="text_suggestion">
+                        <div class="suggestion_action">
+                            <a class="btn btn-default update_fields_show" action="update" title="Update">
+                                <i class="fa fa-refresh fa-spin fa-1x fa-fw" title="Update" aria-hidden="true"></i>
+                                <span class="sr-only">Update</span>
+                            </a>
+                        </div>
+                        <div class="suggestion">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </t>
+    <t t-name="MySuggestion">
+        <ul>
+            <t t-foreach="widget.data.suggestion" t-as="suggest">
+                <t t-set="ok" t-value="widget.data.suggestion[suggest]" />
+                <li>
+                    <div style="position: relative">
+                        <i class="fa fa-cog i_setting_field" title="Settings (toggle to Show/Hide)" aria-hidden="true" t-att-setting="suggest" style="line-height: 100%;vertical-align: middle;margin-right: 5px;opacity: 0.5;"></i>
+                        <div class="setting_field">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="div_string_field">
+                                                <input class="string_field" disabled="disabled" title="String Of Field" t-att-for="ok.value" t-att-value="ok.string" style="float: left;margin-right: 2px;" />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="checkbox check-info" style="margin: 5px 0px 0px 0px">
+                                                <t t-if="ok.invisible != 'false' and ok.invisible != false and ok.invisible != 0 and ok.invisible != '0'">
+                                                    <input type="checkbox" value="invisible" checked="checked" t-att-id="suggest+'_invisible'" />
+                                                </t>
+                                                <t t-if="ok.invisible == 'false' or ok.invisible == false or ok.invisible == 0 or ok.invisible == '0'">
+                                                    <input type="checkbox" value="invisible" t-att-id="suggest+'_invisible'" />
+                                                </t>
+                                                <label t-att-for="suggest+'_invisible'">Invisible</label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="checkbox check-info" style="margin: 5px 0px 0px 0px">
+                                                <t t-if="ok.readonly != 'false' and ok.readonly != false and ok.readonly != 0 and ok.readonly != '0'">
+                                                    <input type="checkbox" value="readonly" checked="checked" t-att-id="suggest+'_readonly'" />
+                                                </t>
+                                                <t t-if="ok.readonly == 'false' or ok.readonly == false or ok.readonly == 0 or ok.readonly == '0'">
+                                                    <input type="checkbox" value="readonly" t-att-id="suggest+'_readonly'" />
+                                                </t>
+                                                <label t-att-for="suggest+'_readonly'">Readonly</label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="checkbox check-info" style="margin: 5px 0px 0px 0px">
+                                                <t t-if="ok.required != 'false' and ok.required != false and ok.required != 0 and ok.required != '0'">
+                                                    <input type="checkbox" value="required" checked="checked" t-att-id="suggest+'_required'" />
+                                                </t>
+                                                <t t-if="ok.required == 'false' or ok.required == false or ok.required == 0 or ok.required == '0'">
+                                                    <input type="checkbox" value="required" t-att-id="suggest+'_required'" />
+                                                </t>
+                                                <label t-att-for="suggest+'_required'">Required</label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <button action="update" class="btn btn-default update_fields_show" title="Update" style="padding: 1px 5px; margin-top: 5px; width: 100%">
+                                                Update
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <input action="get_value" type="hidden" t-att-value="suggest" t-att-string_field="ok.string"
+                               t-att-_readonly="ok.readonly" t-att-_readonly_support="ok.readonly_support"
+                               t-att-invisible="ok.invisible" t-att-invisible_support="ok.invisible_support" t-att-_required="ok.required"
+                               t-att-_required_support="ok.required_support" t-att-id="suggest" />
+                        <label t-att-for="suggest">
+                            <t t-esc="ok.string" />
+                        </label>
+                    </div>
+                </li>
+            </t>
+        </ul>
+    </t>
+</templates>

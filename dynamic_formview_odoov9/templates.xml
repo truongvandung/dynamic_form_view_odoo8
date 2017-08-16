@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="nppformview_dynamic_ok_templates" name="dynamic_formview_odoov9 templates" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" type="text/css" href="/dynamic_formview_odoov9/static/src/css/style.css" />
+                <script type="text/javascript" src="/dynamic_formview_odoov9/static/src/js/custom.js"></script>
+            </xpath>
+        </template>
+    </data>
+</openerp>
